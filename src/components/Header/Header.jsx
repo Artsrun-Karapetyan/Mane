@@ -2,53 +2,53 @@ import AppBar from "@mui/material/AppBar";
 import { Link } from "@tanstack/react-router";
 import { Box, Toolbar } from "@mui/material";
 import img from "../../logo/user.png";
-import { useState } from "react";
-export default function Header() {
-  const [active, setIsActive] = useState("users");
 
+export default function Header() {
   return (
     <AppBar>
       <Toolbar
-        style={{
+        sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
-        <img style={{ width: 70, height: 65 }} src={img} alt="" />
-        <Box style={{ gap: 27, display: "flex" }}>
+        <Link to="/">
+          <img style={{ width: 70, height: 65 }} src={img} alt="" />
+        </Link>
+        <Box sx={{ gap: 27, display: "flex" }}>
           <Link
-            onClick={() => setIsActive("users")}
+            activeProps={{ style: { color: "orange" } }}
+            inactiveProps={{ style: { color: "white" } }}
             style={{
-              color: active === "users" ? "grey" : "white",
               fontSize: 21,
               textDecoration: "none",
             }}
             to="/users"
           >
-            Users
+            Օգտատերեր
           </Link>
           <Link
             style={{
-              color: active === "courts" ? "grey" : "white",
               fontSize: 21,
               textDecoration: "none",
             }}
             to="/courts"
-            onClick={() => setIsActive("courts")}
+            activeProps={{ style: { color: "orange" } }}
+            inactiveProps={{ style: { color: "white" } }}
           >
-            Courts
+            Դատարաններ
           </Link>
           <Link
             style={{
-              color: active === "custom" ? "grey" : "white",
               fontSize: 21,
               textDecoration: "none",
             }}
+            activeProps={{ style: { color: "orange" } }}
+            inactiveProps={{ style: { color: "white" } }}
             to="/custom"
-            onClick={() => setIsActive("custom")}
           >
-            Custom
+            Օգտատերի ստեղծում
           </Link>
         </Box>
       </Toolbar>
