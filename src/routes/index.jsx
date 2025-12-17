@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import HomePage from '../components/HomePage'
 
+
 export const Route = createFileRoute('/')({
   component: RouteComponent,
 })
@@ -8,3 +9,4 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   return <HomePage />
 }
+
