@@ -12,9 +12,9 @@ import {
   Box,
 } from '@mui/material'
 
-const DataTable = ({ 
-  columns = [], 
-  data = [], 
+const DataTable = ({
+  columns = [],
+  data = [],
   title,
   emptyMessage = 'No data available',
   rowsPerPageOptions = [5, 10, 25, 50],
