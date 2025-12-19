@@ -1,15 +1,9 @@
-import useSWR from 'swr';
-
-const fetcher = (url) =>
-  fetch(url).then((res) => {
-    return res.json();
-  });
-
+import useSWR from "swr";
 
 export const useGetUsers = () => {
-  return useSWR(`https://69415461686bc3ca816695fc.mockapi.io/users`, fetcher,{
+  return useSWR(`users`, {
     onError: (error) => {
       console.error(error);
-    }
+    },
   });
 };
