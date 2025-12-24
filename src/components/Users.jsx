@@ -1,6 +1,6 @@
 import DataTable from "./shared/DataTable";
 import { useGetUsers } from "./queries";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
 
 export default function Users() {
@@ -26,6 +26,9 @@ export default function Users() {
         marginLeft: 10,
       }}
     >
+      <Typography sx={{ textAlign: "center", fontSize: 21 }}>
+        Օգտատերերի ցուցակ
+      </Typography>
       <Box sx={{ width: "100%", maxWidth: 1200 }}>
         <DataTable title="Users" columns={columns} data={data || []} />
       </Box>

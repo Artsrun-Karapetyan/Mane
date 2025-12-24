@@ -1,15 +1,18 @@
-import { create } from 'zustand'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export const useAppStore = create((set) => ({
-  // Initial value 1
-  count: 0,
-  // Initial value 2
-  name: 'Mane',
-  
-  // Actions to update state
-  setCount: (count) => set({ count }),
-  setName: (name) => set({ name }),
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
-}))
+export const useAppStore = create(
+  persist(
+    (set) => ({
+      users: [],
 
+      addUser: (user) =>
+        set((state) => ({
+          users: [...state.users, user],
+        })),
+    }),
+    {
+      name: "users",
+    }
+  )
+);
