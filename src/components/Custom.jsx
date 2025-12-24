@@ -4,14 +4,14 @@ import DataTable from "./shared/DataTable";
 import { Box } from "@mui/material";
 export default function Custom() {
 
-  const users  = useAppStore((state)=> state.users)
+  const {users}  = useAppStore()
   const columns = [
-    { id: "name", label: "name" },
-    { id: "email", label: "email" },
-    { id: "phone", label: "phone" },
-    { id: "gender", label: "gender" },
-    { id: "country", label: "country" },
-    { id: "message", label: "message" },
+    { id: "name", label: "Անուն" },
+    { id: "email", label: "Էլ փոստ" },
+    { id: "phone", label: "Հեռախոսահամար" },
+    { id: "gender", label: "Սեռ" },
+    { id: "country", label: "Երկիր" },
+    { id: "message", label: "Տվյալներ" },
   ];
   return (
     <>

@@ -3,24 +3,22 @@ import {
   Button,
   Box,
   DialogTitle,
-  TextareaAutosize,
   MenuItem,
   Select,
   TextField,
   CircularProgress,
   InputLabel,
 } from "@mui/material";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+
 import { useState } from "react";
 import { useFormik } from "formik";
-import style from "./CreateModal.module.css";
 import { useAppStore } from "../stores/useAppStore";
 
 export default function CreateModal() {
-
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const addUser = useAppStore((state) => state.addUser);
-
+  const { addUser } = useAppStore();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -92,7 +90,21 @@ export default function CreateModal() {
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box
-          className={style.box}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: 540,
+            height: 870,
+            transform: "translate(-50%, -50%)",
+            border: "2px solid black",
+            backgroundColor: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "30px",
+          }}
           onSubmit={formik.handleSubmit}
           component="form"
         >
@@ -100,12 +112,12 @@ export default function CreateModal() {
           <TextField
             type="text"
             name="name"
-            label="name"
+            label="անուն"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.name && formik.errors.name}
+            error={formik.errors.name}
             sx={{ width: 300, height: 50 }}
-            helperText={formik.touched.name && formik.errors.name}
+            helperText={formik.errors.name}
             value={formik.values.name}
           />
           <TextField
@@ -113,9 +125,9 @@ export default function CreateModal() {
             name="email"
             label="email"
             value={formik.values.email}
-            error={formik.touched.email && formik.errors.email}
+            error={formik.errors.email}
             sx={{ width: 300, height: 50 }}
-            helperText={formik.touched.email && formik.errors.email}
+            helperText={formik.errors.email}
             onChange={formik.handleChange}
           />
           <TextField
@@ -124,8 +136,8 @@ export default function CreateModal() {
             label="phone"
             value={formik.values.phone}
             sx={{ width: 300, height: 50 }}
-            error={formik.touched.phone && formik.errors.phone}
-            helperText={formik.touched.phone && formik.errors.phone}
+            error={formik.errors.phone}
+            helperText={formik.errors.phone}
             onChange={formik.handleChange}
           />
           <InputLabel id="gender">Ընտրեք սեռ</InputLabel>
@@ -141,7 +153,7 @@ export default function CreateModal() {
             <MenuItem value="male">male</MenuItem>
             <MenuItem value="female">female</MenuItem>
           </Select>
-          {formik.touched.gender && formik.errors.gender && (
+          {formik.errors.gender && (
             <div style={{ color: "red", fontSize: 12 }}>
               {formik.errors.gender}
             </div>
@@ -160,22 +172,21 @@ export default function CreateModal() {
             <MenuItem value="France">France</MenuItem>
             <MenuItem value="Spain">Spain</MenuItem>
           </Select>
-          {formik.touched.country && formik.errors.country && (
+          {formik.errors.country && (
             <span style={{ color: "red", fontSize: 12 }}>
               {formik.errors.country}
             </span>
           )}
           <TextareaAutosize
-            sx={{ width: 300, height: 110, border: 1 }}
+            style={{ width: 300, height: 5, border: "2, color: grey" }}
             name="message"
             aria-label="minimum height"
-            minRows={3}
-            style={{ width: 200 }}
+            minRows={15}
             value={formik.values.message}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.touched.message && formik.errors.message && (
+          {formik.errors.message && (
             <div style={{ color: "red", fontSize: 12 }}>
               {formik.errors.message}
             </div>
