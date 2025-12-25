@@ -1,4 +1,4 @@
-import DataTable from "./shared/DataTable";
+import DataTable from "../components/shared/DataTable";
 import { useGetUsers } from "./queries";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
@@ -6,10 +6,10 @@ import Alert from "@mui/material/Alert";
 export default function Users() {
   const columns = [
     { id: "id", label: "ID" },
-    { id: "name", label: "name" },
-    { id: "email", label: "email" },
-    { id: "role", label: "role" },
-    { id: "createdAt", label: "created At" },
+    { id: "name", label: "Անուն" },
+    { id: "email", label: "Էլ փոստ" },
+    { id: "role", label: "Սեռ" },
+    { id: "createdAt", label: "Ստեղծվել է" },
   ];
   const { data = [], isLoading, error } = useGetUsers();
 
