@@ -1,4 +1,4 @@
-import { useGetCourts } from "../components/queries";
+import { useGetCourts } from "./queries";
 import { Box, CircularProgress } from "@mui/material";
 import DataTable from "../components/shared/DataTable";
 import CreateCourtsModal from "./CreateCourtsModal";

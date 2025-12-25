@@ -1,21 +1,19 @@
 import { Button } from "@mui/material";
-import { useCourtsDelete } from "../components/mutation";
+import { useCourtsDelete } from "./mutation";
 import { useState } from "react";
 import DeleteModal from "./DeleteModal";
-
 
 export default function DeleteCourtsModal({ id }) {
   const { trigger: deleteCourt } = useCourtsDelete(id);
   const [open, setOpen] = useState(false);
   const handleDeleteClick = () => setOpen(true);
 
- const handleConfirmDelete = async () => {
+  const handleConfirmDelete = async () => {
     await deleteCourt();
     setOpen(false);
   };
 
-
-    const handleCancel = () => setOpen(false);
+  const handleCancel = () => setOpen(false);
 
   return (
     <>
@@ -23,7 +21,7 @@ export default function DeleteCourtsModal({ id }) {
         Ջնջել
       </Button>
 
-       <DeleteModal
+      <DeleteModal
         open={open}
         oncancel={handleCancel}
         onConfirm={handleConfirmDelete}
