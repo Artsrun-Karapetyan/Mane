@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
-import { useCourtsUpdate } from "./mutation";
+import { useCourtsUpdate } from "../components/mutation";
+import { useSWRConfig } from "swr";
 import { Modal, Button, Box, TextField, CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
+import { useCourtDetail } from "../components/queries";
 
-export default function EditCourtsModal({ court }) {
+
+export default function EditCourtsModal({ id }) {
+  const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
-  const { trigger, isMutating } = useCourtsUpdate(court.id);
+  const { trigger, isMutating } = useCourtsUpdate(id);
+  const { data: court } = useCourtDetail(id);
 
   const formik = useFormik({
     initialValues: {
-      name: court.name,
-      city: court.city,
+      name: court?.name,
+      city: court?.city,
     },
 
     onSubmit: async (values, { resetForm, setErrors }) => {
       try {
         await trigger(values);
+        mutate(`/courts/${id}`)
         setOpen(false);
         resetForm();
       } catch (error) {
@@ -37,12 +43,15 @@ export default function EditCourtsModal({ court }) {
     },
   });
 
-  useEffect(() => {
-    formik.setValues({
-      name: court.name,
-      city: court.city,
-    });
-  }, [court]);
+   useEffect(() => {
+    if (open && court) {
+      formik.setValues({
+        name: court.name,
+        city: court.city,
+      });
+    }
+  }, [open, court]);
+
 
   const handleOpen = () => {
     setOpen(true);

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Custom from "../components/Custom";
+import Custom from "../components/Custom/Custom";
 export const Route = createFileRoute("/custom")({
   component: CustomPage,
 });

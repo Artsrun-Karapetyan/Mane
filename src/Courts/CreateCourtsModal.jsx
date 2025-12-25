@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAddCourts } from "./mutation";
+import { useAddCourts } from "../components/mutation";
 import { Modal, Button, Box, TextField, CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 
@@ -13,12 +13,10 @@ export default function CreateCourtsModal() {
       city: "",
     },
     onSubmit: async (values, { resetForm }) => {
-     try {
-
+      try {
         await trigger(values);
         setOpen(false);
         resetForm();
-
       } catch (error) {
         setErrors(error?.errors || {});
       }

@@ -1,6 +1,6 @@
-import { useAppStore } from "../stores/useAppStore";
+import { useAppStore } from "../../stores/useAppStore";
 import CreateModal from "./CreateModal";
-import DataTable from "./shared/DataTable";
+import DataTable from "../shared/DataTable";
 import { Box } from "@mui/material";
 export default function Custom() {
 

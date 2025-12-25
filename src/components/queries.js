@@ -15,3 +15,11 @@ export const useGetCourts = () => {
     },
   });
 };
+
+export const useCourtDetail = (id) => {
+  return useSWR(`/courts/${id}`, {
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};

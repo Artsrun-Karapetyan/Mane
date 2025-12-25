@@ -1,28 +1,11 @@
-import { useGetCourts } from "./queries";
+import { useGetCourts } from "../components/queries";
 import { Box, CircularProgress } from "@mui/material";
-import DataTable from "./shared/DataTable";
+import DataTable from "../components/shared/DataTable";
 import CreateCourtsModal from "./CreateCourtsModal";
-import EditCourtsModal from "./EditCourtsModal";
-import DeleteCourtsModal from "./DeleteCourtsModal";
+import { useCourtsColumns } from "./UseCourtsColumns";
 export default function Courts() {
   const { data, isLoading, error } = useGetCourts();
-
-  const columns = [
-    { id: "id", label: "ID" },
-    { id: "name", label: "Անուն" },
-    { id: "city", label: "Քաղաք" },
-    {
-      id: "actions",
-      label: "Գործողություններ",
-      render: (value, row, rowIndex) => (
-        <Box>
-          <EditCourtsModal court={row} />
-          <DeleteCourtsModal court={row} />
-        </Box>
-      ),
-    },
-  ];
-
+  const columns = useCourtsColumns({ data: data || [] });
   console.log("data", data);
 
   if (isLoading) {

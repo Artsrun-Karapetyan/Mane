@@ -13,7 +13,8 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 import { useState } from "react";
 import { useFormik } from "formik";
-import { useAppStore } from "../stores/useAppStore";
+import { useAppStore } from "../../stores/useAppStore";
+
 
 export default function CreateModal() {
   const [open, setOpen] = useState(false);
