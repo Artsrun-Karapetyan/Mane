@@ -7,3 +7,11 @@ export const useGetUsers = () => {
     },
   });
 };
+
+export const useGetCourts = () => {
+  return useSWR("/courts", {
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};
