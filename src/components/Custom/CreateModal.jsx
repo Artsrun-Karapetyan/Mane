@@ -10,7 +10,6 @@ import {
   InputLabel,
 } from "@mui/material";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-
 import { useState } from "react";
 import { useFormik } from "formik";
 import { useAppStore } from "../../stores/useAppStore";
@@ -47,7 +46,6 @@ export default function CreateModal() {
     },
     validate: (values) => {
       const errors = {};
-      console.log(errors);
 
       if (!values.name) {
         errors.name = "Անուն դաշտը պարտադիր է";

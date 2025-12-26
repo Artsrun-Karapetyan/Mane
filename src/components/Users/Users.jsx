@@ -1,4 +1,4 @@
-import DataTable from "../components/shared/DataTable";
+import DataTable from "../shared/DataTable";
 import { useGetUsers } from "./queries";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";

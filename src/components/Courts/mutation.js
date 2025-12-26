@@ -1,5 +1,5 @@
 import useSWRMutation from "swr/mutation";
-import { useApiRequests } from "../services/useApiRequests";
+import { useApiRequests } from '../../services/useApiRequests';
 import { useSWRConfig } from "swr";
 
 export const useAddCourts = () => {
