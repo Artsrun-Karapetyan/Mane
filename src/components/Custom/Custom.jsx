@@ -2,9 +2,10 @@ import { useAppStore } from "../../stores/useAppStore";
 import CreateModal from "./CreateModal";
 import DataTable from "../shared/DataTable";
 import { Box } from "@mui/material";
-export default function Custom() {
 
-  const {users}  = useAppStore()
+export default function Custom() {
+  const { users } = useAppStore();
+
   const columns = [
     { id: "name", label: "Անուն" },
     { id: "email", label: "Էլ փոստ" },
@@ -16,8 +17,8 @@ export default function Custom() {
   return (
     <>
       <Box sx={{ marginTop: 20 }}>
-        <CreateModal  />
-        <DataTable columns={columns}   data={users}/>
+        <CreateModal />
+        <DataTable columns={columns} data={users} />
       </Box>
     </>
   );

@@ -25,7 +25,6 @@ export default function EditCourtsModal({ id }) {
         resetForm();
       } catch (error) {
         setErrors(error?.errors || {});
-        console.log(error.response?.data?.errors);
       }
     },
     validate: (values) => {

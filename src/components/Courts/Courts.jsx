@@ -1,12 +1,12 @@
 import { useGetCourts } from "./queries";
 import { Box, CircularProgress } from "@mui/material";
-import DataTable from "../components/shared/DataTable";
+import DataTable from "../shared/DataTable";
 import CreateCourtsModal from "./CreateCourtsModal";
 import { useCourtsColumns } from "./UseCourtsColumns";
+
 export default function Courts() {
   const { data, isLoading, error } = useGetCourts();
   const columns = useCourtsColumns({ data: data || [] });
-  console.log("data", data);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -15,6 +15,7 @@ export default function Courts() {
   if (error) {
     return <Alert severity="error">{error.message}</Alert>;
   }
+
   return (
     <Box>
       <CreateCourtsModal />
